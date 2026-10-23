@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=4f73817">
+<link rel="stylesheet" href="style.css?v=cert-preview-2">
 </head>
 <body>
 <div class="wrap">
@@ -93,27 +93,29 @@
 
       <section class="card">
         <h2>อบรมประกาศนียบัตร</h2>
-        <div class="cert cert-with-preview">
-          <div class="org">Google Course Certificate</div>
-          <div class="name">Google Digital Marketing &amp; E-commerce</div>
-          <button class="cert-preview-trigger" type="button" aria-expanded="false" aria-controls="digitalMarketingPreview">
-            <span aria-hidden="true">▧</span> ดูใบประกาศนียบัตร <small>ชี้หรือแตะเพื่อดู</small>
-          </button>
-          <div class="cert-preview" id="digitalMarketingPreview">
-            <img src="assets/projects/certificate-digital-marketing-placeholder.svg" alt="ภาพจำลองใบประกาศนียบัตร Google Digital Marketing and E-commerce">
-            <div class="cert-preview-caption"><strong>Google Digital Marketing &amp; E-commerce</strong><small>ภาพใบประกาศนียบัตรจำลอง</small></div>
-          </div>
-        </div>
-        <div class="cert cert-with-preview">
-          <div class="org">Google Course Certificate</div>
-          <div class="name">Google UX/UI Design</div>
-          <button class="cert-preview-trigger" type="button" aria-expanded="false" aria-controls="uxDesignPreview">
-            <span aria-hidden="true">▧</span> ดูใบประกาศนียบัตร <small>ชี้หรือแตะเพื่อดู</small>
-          </button>
-          <div class="cert-preview" id="uxDesignPreview">
-            <img src="assets/projects/certificate-ux-design-placeholder.svg" alt="ภาพจำลองใบประกาศนียบัตร Google UX Design">
-            <div class="cert-preview-caption"><strong>Google UX/UI Design</strong><small>ภาพใบประกาศนียบัตรจำลอง</small></div>
-          </div>
+        <div class="cert-list">
+          <details class="cert cert-with-preview" name="certificate-preview">
+            <summary class="cert-summary">
+              <span class="org">Google Course Certificate</span>
+              <span class="name">Google Digital Marketing &amp; E-commerce</span>
+              <span class="cert-preview-trigger"><span aria-hidden="true">▧</span> ดูใบประกาศนียบัตร <small>ชี้หรือแตะเพื่อดู</small></span>
+            </summary>
+            <div class="cert-preview">
+              <img src="assets/projects/certificate-digital-marketing-placeholder.svg" alt="ภาพจำลองใบประกาศนียบัตร Google Digital Marketing and E-commerce">
+              <div class="cert-preview-caption"><strong>Google Digital Marketing &amp; E-commerce</strong><small>ภาพใบประกาศนียบัตรจำลอง</small></div>
+            </div>
+          </details>
+          <details class="cert cert-with-preview" name="certificate-preview">
+            <summary class="cert-summary">
+              <span class="org">Google Course Certificate</span>
+              <span class="name">Google UX/UI Design</span>
+              <span class="cert-preview-trigger"><span aria-hidden="true">▧</span> ดูใบประกาศนียบัตร <small>ชี้หรือแตะเพื่อดู</small></span>
+            </summary>
+            <div class="cert-preview">
+              <img src="assets/projects/certificate-ux-design-placeholder.svg" alt="ภาพจำลองใบประกาศนียบัตร Google UX Design">
+              <div class="cert-preview-caption"><strong>Google UX/UI Design</strong><small>ภาพใบประกาศนียบัตรจำลอง</small></div>
+            </div>
+          </details>
         </div>
       </section>
     </aside>
@@ -395,51 +397,6 @@
     });
   })();
 
-  (function () {
-    var certificates = Array.from(document.querySelectorAll('.cert-with-preview'));
-    var hoverInput = window.matchMedia('(hover:hover) and (pointer:fine)');
-
-    function setOpen(certificate, open) {
-      certificates.forEach(function (other) {
-        var isOpen = open && other === certificate;
-        other.classList.toggle('is-preview-open', isOpen);
-        other.querySelector('.cert-preview-trigger').setAttribute('aria-expanded', String(isOpen));
-      });
-    }
-
-    certificates.forEach(function (certificate) {
-      var trigger = certificate.querySelector('.cert-preview-trigger');
-
-      certificate.addEventListener('pointerenter', function (event) {
-        if (hoverInput.matches && event.pointerType !== 'touch') setOpen(certificate, true);
-      });
-      certificate.addEventListener('pointerleave', function (event) {
-        if (hoverInput.matches && event.pointerType !== 'touch') setOpen(certificate, false);
-      });
-      certificate.addEventListener('focusin', function () { setOpen(certificate, true); });
-      certificate.addEventListener('focusout', function (event) {
-        if (!certificate.contains(event.relatedTarget)) setOpen(certificate, false);
-      });
-      trigger.addEventListener('click', function (event) {
-        if (hoverInput.matches) {
-          setOpen(certificate, true);
-          return;
-        }
-        setOpen(certificate, !certificate.classList.contains('is-preview-open'));
-      });
-    });
-    document.addEventListener('click', function (event) {
-      certificates.forEach(function (certificate) {
-        if (!certificate.contains(event.target)) {
-          var isOpen = certificates.some(function (item) { return item.classList.contains('is-preview-open'); });
-          if (isOpen) setOpen(null, false);
-        }
-      });
-    });
-    document.addEventListener('keydown', function (event) {
-      if (event.key === 'Escape') setOpen(null, false);
-    });
-  })();
 </script>
 </body>
 </html>
