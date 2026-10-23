@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=cert-preview-5">
+<link rel="stylesheet" href="style.css?v=cert-preview-6">
 </head>
 <body>
 <div class="wrap">
@@ -397,12 +397,28 @@
 
   (function () {
     var certificates = Array.from(document.querySelectorAll('.cert-with-preview'));
+    var hoverMedia = window.matchMedia('(hover: hover) and (pointer: fine)');
+
+    function closeOthers(activeCertificate) {
+      certificates.forEach(function (other) {
+        if (other !== activeCertificate && other.open) other.open = false;
+      });
+    }
+
     certificates.forEach(function (certificate) {
+      certificate.addEventListener('mouseenter', function () {
+        if (!hoverMedia.matches) return;
+        closeOthers(certificate);
+        certificate.open = true;
+      });
+
+      certificate.addEventListener('mouseleave', function () {
+        if (hoverMedia.matches && certificate.open) certificate.open = false;
+      });
+
       certificate.addEventListener('toggle', function () {
         if (!certificate.open) return;
-        certificates.forEach(function (other) {
-          if (other !== certificate && other.open) other.open = false;
-        });
+        closeOthers(certificate);
       });
     });
 
