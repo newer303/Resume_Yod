@@ -104,7 +104,7 @@ body{
 .roles{ display:flex; flex-wrap:wrap; gap:8px; margin:0 0 20px; }
 .roles span{ background:#fff; color:var(--primary); font-size:13px; font-weight:700; padding:4px 12px; border-radius:8px; }
 .contacts{ display:flex; flex-wrap:wrap; gap:10px; }
-.language-switch{ display:flex; width:max-content; gap:4px; margin:0 0 12px; padding:4px; border:1px solid rgba(255,255,255,.32); border-radius:999px; background:rgba(255,255,255,.12); }
+.language-switch{ position:absolute; z-index:3; top:16px; right:18px; display:flex; width:max-content; gap:4px; margin:0; padding:4px; border:1px solid rgba(255,255,255,.32); border-radius:999px; background:rgba(20,91,130,.2); backdrop-filter:blur(8px); }
 .language-button{ min-height:30px; padding:4px 12px; border:0; border-radius:999px; color:rgba(255,255,255,.82); background:transparent; font:inherit; font-size:12px; font-weight:700; cursor:pointer; transition:background .18s,color .18s,box-shadow .18s; }
 .language-button:hover{ color:#fff; background:rgba(255,255,255,.16); }
 .language-button.is-active{ color:#155c73; background:#fff; box-shadow:0 2px 8px rgba(16,45,70,.16); }
@@ -431,6 +431,8 @@ body{ overflow-wrap:anywhere; }
 .hero .cv-link svg{ width:17px; height:17px; }
 @media (max-width:560px){
   .hero{ grid-template-columns:minmax(0,1fr); justify-items:center; gap:19px; padding:26px 20px 24px; }
+  .language-switch{ top:12px; right:12px; }
+  .language-button{ min-height:28px; padding:3px 10px; font-size:11px; }
   .hero .avatar-wrapper{ width:132px; height:132px; }
   .hero .hero-info{ width:100%; text-align:center; }
   .profile-kicker{ font-size:9px; }
