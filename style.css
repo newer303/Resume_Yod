@@ -268,16 +268,10 @@ a.contact-option:hover{ transform:translateY(-2px); border-color:var(--primary-2
 .cert-summary::-webkit-details-marker{ display:none; }
 .cert-summary:focus-visible{ outline:3px solid color-mix(in srgb,var(--primary) 35%,transparent); outline-offset:4px; border-radius:8px; }
 .cert-preview-trigger{
-  display:inline-flex; align-items:center; gap:7px; min-height:34px; margin-top:8px; padding:5px 11px;
-  border:1px solid var(--border); border-radius:999px; background:var(--bg); color:var(--text);
-  font-size:11px; font-weight:700; transition:color .2s,border-color .2s,background .2s,transform .2s;
+  display:inline; margin-left:5px; color:var(--primary); font-size:11px; font-weight:700; white-space:nowrap;
 }
-.cert-preview-trigger>span{ font-size:15px; line-height:1; }
-.cert-preview-trigger small{ color:var(--muted); font-size:10px; font-weight:400; }
-.cert-summary:hover .cert-preview-trigger,.cert-with-preview[open] .cert-preview-trigger{
-  color:var(--primary); border-color:var(--primary); background:var(--primary-soft);
-}
-.cert-summary:hover .cert-preview-trigger{ transform:translateY(-1px); }
+.cert-preview-trigger>span{ font-size:12px; }
+.cert-summary:hover .cert-preview-trigger{ text-decoration:underline; text-underline-offset:3px; }
 .cert-preview{
   display:none; position:relative; width:100%; margin-top:12px;
   padding:10px; border:1px solid var(--border); border-radius:17px; background:var(--card);
@@ -289,11 +283,7 @@ a.contact-option:hover{ transform:translateY(-2px); border-color:var(--primary-2
 .cert-preview-caption small{ color:var(--muted); font-size:10px; }
 .cert-with-preview[open] .cert-preview{ display:block; animation:cert-preview-in .2s ease-out both; }
 @keyframes cert-preview-in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
-@media (hover:hover) and (pointer:fine){
-  .cert-list:has(.cert-with-preview:hover) .cert-preview{ display:none; }
-  .cert-list .cert-with-preview:hover .cert-preview{ display:block; animation:cert-preview-in .2s ease-out both; }
-}
-@media (prefers-reduced-motion:reduce){.cert-with-preview[open] .cert-preview,.cert-list .cert-with-preview:hover .cert-preview{animation:none}}
+@media (prefers-reduced-motion:reduce){.cert-with-preview[open] .cert-preview{animation:none}}
 
 /* Actions */
 .toolbar{ display:flex; justify-content:flex-end; gap:10px; margin-top:24px; flex-wrap:wrap; }
