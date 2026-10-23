@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" role="img" aria-labelledby="title desc">
+  <title id="title">ภาพจำลองบรรยากาศร้านอาหาร</title>
+  <desc id="desc">ภาพประกอบร้านอาหารโทนอุ่น มีเคาน์เตอร์ เตาอบพิซซ่า และโต๊ะรับประทานอาหาร</desc>
+  <defs>
+    <linearGradient id="wall" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f7e6d2"/><stop offset="1" stop-color="#e8c6a2"/></linearGradient>
+    <linearGradient id="counter" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#b45f42"/><stop offset="1" stop-color="#713b32"/></linearGradient>
+    <linearGradient id="floor" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#cf9670"/><stop offset="1" stop-color="#8f5947"/></linearGradient>
+    <filter id="shadow" x="-.2" y="-.2" width="1.4" height="1.5"><feDropShadow dx="0" dy="12" stdDeviation="12" flood-color="#44261e" flood-opacity=".2"/></filter>
+  </defs>
+  <rect width="960" height="600" fill="url(#wall)"/>
+  <path d="M0 408h960v192H0z" fill="url(#floor)"/>
+  <path d="M0 407h960" stroke="#f8e5d2" stroke-width="9"/>
+  <g opacity=".45" stroke="#fff7ed" stroke-width="5"><path d="M90 0v400M870 0v400"/><path d="M0 122h960"/></g>
+  <g filter="url(#shadow)">
+    <rect x="74" y="92" width="210" height="202" rx="22" fill="#fbf3e8"/>
+    <rect x="95" y="113" width="168" height="157" rx="13" fill="#8b4a38"/>
+    <rect x="111" y="130" width="136" height="112" rx="56" fill="#3f2926"/>
+    <path d="M130 221c10-42 73-54 97-9" fill="none" stroke="#e98a49" stroke-width="10" stroke-linecap="round"/>
+    <circle cx="180" cy="181" r="48" fill="#dca05f"/><circle cx="180" cy="181" r="39" fill="#e9bd73"/>
+    <path d="m161 162 21-12 13 23 18 8-11 18-24-1-16 13-13-16 7-20z" fill="#c85e42"/>
+    <g fill="#547653"><circle cx="168" cy="177" r="5"/><circle cx="194" cy="190" r="5"/><circle cx="178" cy="202" r="4"/></g>
+    <rect x="336" y="112" width="546" height="190" rx="20" fill="#fff8ef"/>
+    <path d="M354 130h510v137H354z" fill="#f3d6b6"/>
+    <path d="M354 267h510v17H354z" fill="#d69b68"/>
+    <g fill="#d18b60"><path d="M400 130v137h12V130zm86 0v137h12V130zm86 0v137h12V130zm86 0v137h12V130zm86 0v137h12V130z"/></g>
+    <path d="M354 302h528v75H354z" fill="url(#counter)"/>
+    <path d="M354 302h528v14H354z" fill="#df9a68"/>
+    <rect x="391" y="334" width="452" height="14" rx="7" fill="#e8b189" opacity=".75"/>
+  </g>
+  <g filter="url(#shadow)">
+    <ellipse cx="700" cy="478" rx="150" ry="28" fill="#624137" opacity=".35"/>
+    <path d="M580 408h239l-24 25H603z" fill="#f2c897"/>
+    <path d="M612 432v90m174-90v90" stroke="#624137" stroke-width="15" stroke-linecap="round"/>
+    <circle cx="698" cy="383" r="51" fill="#f5dfbf"/><circle cx="698" cy="383" r="39" fill="#d88752"/><circle cx="698" cy="383" r="30" fill="#f2c477"/>
+    <path d="m682 372 17-10 12 14 13 5-8 16-18-1-12 10-10-12 5-15z" fill="#c75c45"/>
+    <circle cx="690" cy="380" r="4" fill="#55734d"/><circle cx="710" cy="389" r="4" fill="#55734d"/>
+  </g>
+  <g transform="translate(62 494)">
+    <rect width="308" height="56" rx="28" fill="#fff8ef" fill-opacity=".94"/>
+    <circle cx="30" cy="28" r="7" fill="#4e7960"/>
+    <text x="52" y="35" fill="#523b32" font-family="sans-serif" font-size="21" font-weight="700">ภาพจำลอง · บรรยากาศร้านอาหาร</text>
+  </g>
+</svg>

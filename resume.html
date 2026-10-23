@@ -164,10 +164,22 @@
             <h3>สถาบัน GamedubleD <span class="badge">ผู้ช่วยสอน</span></h3>
             <div class="meta">สถาบันสอนเขียนโค้ด</div>
           </div>
-          <div class="item">
+          <div class="item item-with-preview" id="pizza-experience">
             <div class="date">กันยายน 2567 – พฤศจิกายน 2567</div>
             <h3>Pizza <span class="badge">CHR</span></h3>
             <div class="meta">เซียร์รังสิต · 8,000 – 9,000 ฿</div>
+            <button class="experience-preview-trigger" type="button" aria-expanded="false" aria-controls="pizzaPreview">
+              <span class="preview-trigger-icon" aria-hidden="true">▧</span>
+              ดูภาพบรรยากาศร้าน
+              <span class="preview-trigger-hint">ชี้หรือแตะเพื่อดู</span>
+            </button>
+            <div class="experience-preview" id="pizzaPreview" aria-label="ภาพจำลองบรรยากาศร้านอาหาร">
+              <img src="assets/projects/pizza-workplace-placeholder.svg" alt="ภาพจำลองบรรยากาศร้านอาหาร มีเคาน์เตอร์และเตาอบพิซซ่า">
+              <div class="experience-preview-caption">
+                <span class="preview-caption-icon" aria-hidden="true">✦</span>
+                <span><strong>บรรยากาศร้านอาหาร</strong><small>ภาพประกอบจำลองสำหรับประสบการณ์ทำงาน</small></span>
+              </div>
+            </div>
             <p>ตอนรับลูกค้าและให้บริการลูกค้า</p>
           </div>
           <div class="item">
@@ -378,6 +390,27 @@
             if (observer) observer.unobserve(card);
           }
         });
+    });
+  })();
+
+  (function () {
+    var item = document.getElementById('pizza-experience');
+    var trigger = item.querySelector('.experience-preview-trigger');
+    var preview = document.getElementById('pizzaPreview');
+
+    function setOpen(open) {
+      item.classList.toggle('is-preview-open', open);
+      trigger.setAttribute('aria-expanded', String(open));
+    }
+
+    trigger.addEventListener('click', function () {
+      setOpen(!item.classList.contains('is-preview-open'));
+    });
+    document.addEventListener('click', function (event) {
+      if (!item.contains(event.target)) setOpen(false);
+    });
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape') setOpen(false);
     });
   })();
 </script>
