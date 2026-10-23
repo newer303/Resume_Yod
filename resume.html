@@ -242,7 +242,7 @@
       <input class="form-honeypot" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
       <div class="form-row">
         <label>ชื่อของคุณ<input name="name" autocomplete="name" placeholder="ชื่อ" required></label>
-        <label>อีเมลสำหรับติดต่อกลับ <span>(จำเป็น)</span><input name="email" type="email" autocomplete="email" placeholder="you@example.com" required></label>
+        <label>อีเมลสำหรับติดต่อกลับ <span>(ไม่บังคับ)</span><input name="email" type="email" autocomplete="email" placeholder="you@example.com"></label>
       </div>
       <label>หัวข้อ<input name="subject" placeholder="หัวข้อข้อความ" required></label>
       <label>ข้อความ<textarea name="message" rows="4" placeholder="เขียนข้อความที่ต้องการส่ง…" required></textarea></label>
@@ -284,7 +284,7 @@
       var message = String(data.get('message')).trim();
       return {
         subject: subject,
-        body: ['ชื่อ: ' + name, 'อีเมลสำหรับติดต่อกลับ: ' + email, '', message].join('\n')
+        body: ['ชื่อ: ' + name, 'อีเมลสำหรับติดต่อกลับ: ' + (email || 'ไม่ได้ระบุ'), '', message].join('\n')
       };
     }
     sendWithGmail.addEventListener('click', function () {
@@ -304,11 +304,14 @@
       var submitButton = contactForm.querySelector('[type="submit"]');
       var payload = {
         name: String(formData.get('name')).trim(),
-        email: String(formData.get('email')).trim(),
-        _replyto: String(formData.get('email')).trim(),
         _subject: String(formData.get('subject')).trim(),
         message: String(formData.get('message')).trim()
       };
+      var replyEmail = String(formData.get('email')).trim();
+      if (replyEmail) {
+        payload.email = replyEmail;
+        payload._replyto = replyEmail;
+      }
       formStatus.textContent = 'กำลังส่งข้อความ…';
       formStatus.classList.remove('is-error');
       submitButton.disabled = true;
