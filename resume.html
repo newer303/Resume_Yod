@@ -93,13 +93,27 @@
 
       <section class="card">
         <h2>อบรมประกาศนียบัตร</h2>
-        <div class="cert">
+        <div class="cert cert-with-preview">
           <div class="org">Google Course Certificate</div>
           <div class="name">Google Digital Marketing &amp; E-commerce</div>
+          <button class="cert-preview-trigger" type="button" aria-expanded="false" aria-controls="digitalMarketingPreview">
+            <span aria-hidden="true">▧</span> ดูใบประกาศนียบัตร <small>ชี้หรือแตะเพื่อดู</small>
+          </button>
+          <div class="cert-preview" id="digitalMarketingPreview">
+            <img src="assets/projects/certificate-digital-marketing-placeholder.svg" alt="ภาพจำลองใบประกาศนียบัตร Google Digital Marketing and E-commerce">
+            <div class="cert-preview-caption"><strong>Google Digital Marketing &amp; E-commerce</strong><small>ภาพใบประกาศนียบัตรจำลอง</small></div>
+          </div>
         </div>
-        <div class="cert">
+        <div class="cert cert-with-preview">
           <div class="org">Google Course Certificate</div>
           <div class="name">Google UX/UI Design</div>
+          <button class="cert-preview-trigger" type="button" aria-expanded="false" aria-controls="uxDesignPreview">
+            <span aria-hidden="true">▧</span> ดูใบประกาศนียบัตร <small>ชี้หรือแตะเพื่อดู</small>
+          </button>
+          <div class="cert-preview" id="uxDesignPreview">
+            <img src="assets/projects/certificate-ux-design-placeholder.svg" alt="ภาพจำลองใบประกาศนียบัตร Google UX Design">
+            <div class="cert-preview-caption"><strong>Google UX/UI Design</strong><small>ภาพใบประกาศนียบัตรจำลอง</small></div>
+          </div>
         </div>
       </section>
     </aside>
@@ -164,22 +178,10 @@
             <h3>สถาบัน GamedubleD <span class="badge">ผู้ช่วยสอน</span></h3>
             <div class="meta">สถาบันสอนเขียนโค้ด</div>
           </div>
-          <div class="item item-with-preview" id="pizza-experience">
+          <div class="item">
             <div class="date">กันยายน 2567 – พฤศจิกายน 2567</div>
             <h3>Pizza <span class="badge">CHR</span></h3>
             <div class="meta">เซียร์รังสิต · 8,000 – 9,000 ฿</div>
-            <button class="experience-preview-trigger" type="button" aria-expanded="false" aria-controls="pizzaPreview">
-              <span class="preview-trigger-icon" aria-hidden="true">▧</span>
-              ดูภาพบรรยากาศร้าน
-              <span class="preview-trigger-hint">ชี้หรือแตะเพื่อดู</span>
-            </button>
-            <div class="experience-preview" id="pizzaPreview" aria-label="ภาพจำลองบรรยากาศร้านอาหาร">
-              <img src="assets/projects/pizza-workplace-placeholder.svg" alt="ภาพจำลองบรรยากาศร้านอาหาร มีเคาน์เตอร์และเตาอบพิซซ่า">
-              <div class="experience-preview-caption">
-                <span class="preview-caption-icon" aria-hidden="true">✦</span>
-                <span><strong>บรรยากาศร้านอาหาร</strong><small>ภาพประกอบจำลองสำหรับประสบการณ์ทำงาน</small></span>
-              </div>
-            </div>
             <p>ตอนรับลูกค้าและให้บริการลูกค้า</p>
           </div>
           <div class="item">
@@ -394,23 +396,27 @@
   })();
 
   (function () {
-    var item = document.getElementById('pizza-experience');
-    var trigger = item.querySelector('.experience-preview-trigger');
-    var preview = document.getElementById('pizzaPreview');
+    var certificates = Array.from(document.querySelectorAll('.cert-with-preview'));
 
-    function setOpen(open) {
-      item.classList.toggle('is-preview-open', open);
-      trigger.setAttribute('aria-expanded', String(open));
+    function setOpen(certificate, open) {
+      certificate.classList.toggle('is-preview-open', open);
+      certificate.querySelector('.cert-preview-trigger').setAttribute('aria-expanded', String(open));
     }
 
-    trigger.addEventListener('click', function () {
-      setOpen(!item.classList.contains('is-preview-open'));
+    certificates.forEach(function (certificate) {
+      certificate.querySelector('.cert-preview-trigger').addEventListener('click', function () {
+        var shouldOpen = !certificate.classList.contains('is-preview-open');
+        certificates.forEach(function (other) { setOpen(other, false); });
+        setOpen(certificate, shouldOpen);
+      });
     });
     document.addEventListener('click', function (event) {
-      if (!item.contains(event.target)) setOpen(false);
+      certificates.forEach(function (certificate) {
+        if (!certificate.contains(event.target)) setOpen(certificate, false);
+      });
     });
     document.addEventListener('keydown', function (event) {
-      if (event.key === 'Escape') setOpen(false);
+      if (event.key === 'Escape') certificates.forEach(function (certificate) { setOpen(certificate, false); });
     });
   })();
 </script>

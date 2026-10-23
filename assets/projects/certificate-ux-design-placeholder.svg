@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" role="img" aria-labelledby="title desc">
+  <title id="title">ภาพจำลองใบประกาศนียบัตร UX Design</title>
+  <desc id="desc">ใบประกาศนียบัตรจำลองโทนขาวและม่วง พร้อมลวดลาย UX และข้อความ UX Design</desc>
+  <defs>
+    <linearGradient id="paper" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fffefa"/><stop offset="1" stop-color="#f4efff"/></linearGradient>
+    <linearGradient id="violet" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#7866d8"/><stop offset="1" stop-color="#b176cb"/></linearGradient>
+    <filter id="shadow" x="-.1" y="-.1" width="1.2" height="1.3"><feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#38285c" flood-opacity=".16"/></filter>
+  </defs>
+  <rect width="960" height="600" rx="24" fill="#ece7f4"/>
+  <g filter="url(#shadow)">
+    <rect x="65" y="48" width="830" height="504" rx="18" fill="url(#paper)"/>
+    <rect x="83" y="66" width="794" height="468" rx="12" fill="none" stroke="#d3c4ee" stroke-width="3"/>
+    <path d="M83 66h240v468H83z" fill="url(#violet)" opacity=".08"/>
+    <circle cx="480" cy="143" r="35" fill="#f0eaff" stroke="#c1afe9" stroke-width="2"/>
+    <rect x="463" y="129" width="34" height="26" rx="5" fill="none" stroke="#7866d8" stroke-width="3"/>
+    <path d="M469 137h22m-22 7h14" stroke="#7866d8" stroke-width="2.5" stroke-linecap="round"/>
+    <text x="480" y="218" text-anchor="middle" fill="#51466c" font-family="sans-serif" font-size="18" font-weight="700" letter-spacing="5">COURSE CERTIFICATE</text>
+    <text x="480" y="275" text-anchor="middle" fill="#28213d" font-family="sans-serif" font-size="34" font-weight="700">UX Design</text>
+    <path d="M350 305h260" stroke="#ded7eb" stroke-width="2"/>
+    <text x="480" y="345" text-anchor="middle" fill="#6d6282" font-family="sans-serif" font-size="17">User Experience Design</text>
+    <text x="480" y="390" text-anchor="middle" fill="#897e9b" font-family="sans-serif" font-size="14">ตัวอย่างภาพจำลองใบประกาศนียบัตร</text>
+    <g transform="translate(415 420)"><rect width="130" height="34" rx="17" fill="#eee8ff"/><circle cx="22" cy="17" r="5" fill="#7866d8"/><path d="M39 17h72" stroke="#a89acd" stroke-width="3" stroke-linecap="round"/></g>
+    <path d="M170 490h180" stroke="#b7acc9" stroke-width="2"/><path d="M610 490h180" stroke="#b7acc9" stroke-width="2"/>
+    <text x="260" y="512" text-anchor="middle" fill="#887e98" font-family="sans-serif" font-size="12">DESIGN PROGRAM</text>
+    <text x="700" y="512" text-anchor="middle" fill="#887e98" font-family="sans-serif" font-size="12">COMPLETION</text>
+    <circle cx="480" cy="490" r="28" fill="#fff" stroke="#c1afe9" stroke-width="3"/>
+    <path d="m468 490 8 8 17-19" fill="none" stroke="#7866d8" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>
