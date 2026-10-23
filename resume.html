@@ -432,6 +432,7 @@
       if (!projectImages.length) return;
       currentImageIndex = (index + projectImages.length) % projectImages.length;
       var imageCopy = projectImages[currentImageIndex].cloneNode();
+      imageCopy.removeAttribute('hidden');
       imageCopy.removeAttribute('fetchpriority');
       dialogImage.replaceChildren(imageCopy);
       imageCounter.textContent = (currentImageIndex + 1) + ' / ' + projectImages.length;
