@@ -241,12 +241,12 @@
       <h3>ส่งข้อความทางอีเมล</h3>
       <div class="form-row">
         <label>ชื่อของคุณ<input name="name" autocomplete="name" placeholder="ชื่อ" required></label>
-        <label>อีเมลสำหรับติดต่อกลับ <span>(ไม่บังคับ)</span><input name="email" type="email" autocomplete="email" placeholder="you@example.com"></label>
+        <label>อีเมลสำหรับติดต่อกลับ <span>(จำเป็น)</span><input name="email" type="email" autocomplete="email" placeholder="you@example.com" required></label>
       </div>
       <label>หัวข้อ<input name="subject" placeholder="หัวข้อข้อความ" required></label>
       <label>ข้อความ<textarea name="message" rows="4" placeholder="เขียนข้อความที่ต้องการส่ง…" required></textarea></label>
       <button class="send-message" type="submit">เปิดอีเมลเพื่อส่งข้อความ <span aria-hidden="true">→</span></button>
-      <p class="mail-note">ปุ่มนี้จะเปิดแอปอีเมลของคุณ พร้อมกรอกข้อความและส่งไปที่ nkegamer1@gmail.com</p>
+      <p class="mail-note">แอปอีเมลจะเปิดขึ้นพร้อมกรอกข้อความและอีเมลสำหรับติดต่อกลับ ส่งถึง nkegamer1@gmail.com</p>
     </form>
   </div>
 </dialog>
@@ -272,7 +272,7 @@
       var message = String(formData.get('message')).trim();
       var body = [
         'ชื่อ: ' + name,
-        'อีเมลสำหรับติดต่อกลับ: ' + (email || 'ไม่ได้ระบุ'),
+        'อีเมลสำหรับติดต่อกลับ: ' + email,
         '',
         message
       ].join('\n');
