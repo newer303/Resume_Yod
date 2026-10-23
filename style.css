@@ -277,6 +277,10 @@ a.contact-option:hover{ transform:translateY(-2px); border-color:var(--primary-2
 .cert-preview-caption strong{ font-size:12px; }
 .cert-preview-caption small{ color:var(--muted); font-size:10px; }
 .cert-with-preview[open] .cert-preview{ display:block; animation:cert-preview-in .2s ease-out both; }
+@media (hover:hover) and (pointer:fine){
+  .cert-with-preview:hover .cert-preview,
+  .cert-with-preview:focus-within .cert-preview{ display:block; animation:cert-preview-in .2s ease-out both; }
+}
 @keyframes cert-preview-in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
 @media (prefers-reduced-motion:reduce){.cert-with-preview[open] .cert-preview{animation:none}}
 
