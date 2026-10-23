@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" role="img" aria-labelledby="title desc">
+  <title id="title">Automated cloud file backup workflow</title>
+  <desc id="desc">Illustration of a webhook sending files through an automation workflow to Google Drive</desc>
+  <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#e4f2ef"/><stop offset="1" stop-color="#b9ddd5"/></linearGradient></defs>
+  <rect width="960" height="540" rx="30" fill="url(#bg)"/>
+  <rect x="54" y="52" width="852" height="436" rx="26" fill="#fbfdf9"/>
+  <text x="92" y="105" fill="#315c55" font-family="Arial,sans-serif" font-size="19" font-weight="700" letter-spacing="1.6">AUTOMATED FILE BACKUP</text>
+  <rect x="96" y="174" width="194" height="224" rx="20" fill="#f0f5f0" stroke="#d6e5dc" stroke-width="2"/>
+  <path d="M158 218h70l32 32v111H158z" fill="#fff" stroke="#6d9c89" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M228 218v34h32M178 279h60m-60 24h60m-60 24h42" stroke="#9ab6a7" stroke-width="7" stroke-linecap="round"/>
+  <text x="193" y="380" text-anchor="middle" fill="#59796b" font-family="Arial,sans-serif" font-size="14" font-weight="700">WEBHOOK</text>
+  <path d="M310 286h115" stroke="#4f9c83" stroke-width="8" stroke-linecap="round"/><path d="m412 268 21 18-21 18" fill="none" stroke="#4f9c83" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="444" y="174" width="194" height="224" rx="20" fill="#edf5f1" stroke="#d6e5dc" stroke-width="2"/>
+  <circle cx="541" cy="271" r="52" fill="#d5eee3"/>
+  <path d="M541 233v72m-28-26 28 28 28-28" fill="none" stroke="#39856d" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="541" y="363" text-anchor="middle" fill="#59796b" font-family="Arial,sans-serif" font-size="14" font-weight="700">APPS SCRIPT</text>
+  <path d="M652 286h115" stroke="#4f9c83" stroke-width="8" stroke-linecap="round"/><path d="m754 268 21 18-21 18" fill="none" stroke="#4f9c83" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="786" y="174" width="76" height="224" rx="20" fill="#eaf4ed" stroke="#d6e5dc" stroke-width="2"/>
+  <path d="M805 245h38v38h-38zM805 292h38v38h-38z" fill="#84b99f"/>
+  <path d="M805 245l19-13 19 13" fill="none" stroke="#438768" stroke-width="5" stroke-linejoin="round"/>
+  <text x="824" y="373" text-anchor="middle" fill="#59796b" font-family="Arial,sans-serif" font-size="11" font-weight="700">DRIVE</text>
+  <circle cx="835" cy="126" r="15" fill="#4fac83"/><path d="m828 126 5 5 10-11" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
