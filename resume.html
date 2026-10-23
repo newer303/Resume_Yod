@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=cert-preview-2">
+<link rel="stylesheet" href="style.css?v=cert-preview-3">
 </head>
 <body>
 <div class="wrap">
@@ -94,7 +94,7 @@
       <section class="card">
         <h2>อบรมประกาศนียบัตร</h2>
         <div class="cert-list">
-          <details class="cert cert-with-preview" name="certificate-preview">
+          <details class="cert cert-with-preview">
             <summary class="cert-summary">
               <span class="org">Google Course Certificate</span>
               <span class="name">Google Digital Marketing &amp; E-commerce</span>
@@ -105,7 +105,7 @@
               <div class="cert-preview-caption"><strong>Google Digital Marketing &amp; E-commerce</strong><small>ภาพใบประกาศนียบัตรจำลอง</small></div>
             </div>
           </details>
-          <details class="cert cert-with-preview" name="certificate-preview">
+          <details class="cert cert-with-preview">
             <summary class="cert-summary">
               <span class="org">Google Course Certificate</span>
               <span class="name">Google UX/UI Design</span>
@@ -394,6 +394,18 @@
             if (observer) observer.unobserve(card);
           }
         });
+    });
+  })();
+
+  (function () {
+    var certificates = Array.from(document.querySelectorAll('.cert-with-preview'));
+    certificates.forEach(function (certificate) {
+      certificate.addEventListener('toggle', function () {
+        if (!certificate.open) return;
+        certificates.forEach(function (other) {
+          if (other !== certificate && other.open) other.open = false;
+        });
+      });
     });
   })();
 
