@@ -235,6 +235,26 @@ a.contact-option:hover{ transform:translateY(-2px); border-color:var(--primary-2
 .project .thumb img{
   width:100%; height:100%; object-fit:cover; display:block; border-radius:inherit;
 }
+.project{ cursor:pointer; transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease; }
+.project:hover,.project:focus-visible{ transform:translateY(-3px); border-color:var(--primary); box-shadow:0 12px 28px rgba(15,23,42,.12); }
+.project:focus-visible{ outline:3px solid color-mix(in srgb,var(--primary) 40%,transparent); outline-offset:3px; }
+.project-dialog{ width:min(620px,calc(100% - 28px)); max-width:none; max-height:min(88vh,860px); padding:0; border:1px solid var(--border); border-radius:22px; color:var(--text); background:var(--card); box-shadow:0 28px 90px rgba(0,0,0,.3); overflow:auto; }
+.project-dialog::backdrop{ background:rgba(8,12,22,.68); backdrop-filter:blur(5px); }
+.project-dialog-panel{ position:relative; }
+.project-dialog-close{ position:absolute; z-index:1; top:12px; right:12px; display:grid; place-items:center; width:40px; height:40px; border:1px solid rgba(255,255,255,.5); border-radius:50%; color:#172033; background:rgba(255,255,255,.92); font:inherit; font-size:26px; line-height:1; cursor:pointer; box-shadow:0 4px 14px rgba(0,0,0,.18); }
+.project-dialog-close:hover{ transform:scale(1.05); }
+.project-dialog-image{ width:100%; aspect-ratio:16/9; background:var(--bg); }
+.project-dialog-image img{ display:block; width:100%; height:100%; object-fit:cover; }
+.project-dialog-content{ padding:24px 28px 28px; }
+.project-dialog-content h2{ margin:3px 0 10px; font-size:clamp(20px,4vw,26px); line-height:1.4; }
+.project-dialog-description{ margin:0; color:var(--muted); line-height:1.8; }
+.project-dialog-tags{ margin-top:18px; }
+@media (prefers-reduced-motion:reduce){.project,.project-dialog-close{transition:none}}
+@media (max-width:560px){
+  .project-dialog{ position:fixed; inset:auto 0 0; width:100%; max-height:calc(100vh - env(safe-area-inset-top, 8px)); max-height:calc(100dvh - env(safe-area-inset-top, 8px)); margin:0; border-radius:22px 22px 0 0; border-bottom:0; }
+  .project-dialog-content{ padding:20px 18px calc(24px + env(safe-area-inset-bottom, 0px)); }
+  .project-dialog-image{ aspect-ratio:16/10; }
+}
 
 /* Timeline */
 .timeline{ position:relative; padding-left:24px; }

@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=cert-preview-6">
+<link rel="stylesheet" href="style.css?v=project-dialog-1">
 </head>
 <body>
 <div class="wrap">
@@ -169,6 +169,19 @@
           <button class="btn" id="moreBtn" type="button" aria-expanded="false">ดูผลงานเพิ่มเติม</button>
         </div>
       </section>
+
+      <dialog class="project-dialog" id="projectDialog" aria-labelledby="projectDialogTitle">
+        <div class="project-dialog-panel">
+          <button class="project-dialog-close" type="button" aria-label="ปิดรายละเอียดโครงการ">×</button>
+          <div class="project-dialog-image"></div>
+          <div class="project-dialog-content">
+            <span class="num project-dialog-num"></span>
+            <h2 id="projectDialogTitle"></h2>
+            <p class="project-dialog-description"></p>
+            <div class="chips project-dialog-tags" aria-label="เครื่องมือที่ใช้"></div>
+          </div>
+        </div>
+      </dialog>
 
       <section class="card">
         <h2>ประวัติการทำงาน</h2>
@@ -392,6 +405,61 @@
             if (observer) observer.unobserve(card);
           }
         });
+    });
+  })();
+
+  (function () {
+    var dialog = document.getElementById('projectDialog');
+    var dialogTitle = document.getElementById('projectDialogTitle');
+    var dialogDescription = dialog.querySelector('.project-dialog-description');
+    var dialogImage = dialog.querySelector('.project-dialog-image');
+    var dialogNumber = dialog.querySelector('.project-dialog-num');
+    var dialogTags = dialog.querySelector('.project-dialog-tags');
+    var closeButton = dialog.querySelector('.project-dialog-close');
+
+    function openProject(project) {
+      var title = project.querySelector('h3');
+      var description = project.querySelector('.desc');
+      var image = project.querySelector('.thumb img');
+      var number = project.querySelector('.num');
+
+      dialogTitle.textContent = title ? title.textContent : 'รายละเอียดโครงการ';
+      dialogDescription.textContent = description ? description.textContent : '';
+      dialogNumber.textContent = number ? 'PROJECT ' + number.textContent : 'PROJECT';
+      dialogImage.replaceChildren();
+      if (image) {
+        var imageCopy = image.cloneNode();
+        imageCopy.removeAttribute('fetchpriority');
+        dialogImage.appendChild(imageCopy);
+      }
+      dialogTags.replaceChildren();
+      project.querySelectorAll('.tags .chip').forEach(function (chip) {
+        var tag = chip.cloneNode(true);
+        dialogTags.appendChild(tag);
+      });
+      if (typeof dialog.showModal === 'function') dialog.showModal();
+    }
+
+    document.querySelectorAll('.project').forEach(function (project) {
+      project.setAttribute('tabindex', '0');
+      project.setAttribute('role', 'button');
+      project.setAttribute('aria-haspopup', 'dialog');
+      var projectTitle = project.querySelector('h3');
+      project.setAttribute('aria-label', 'ดูรายละเอียด ' + (projectTitle ? projectTitle.textContent : 'โครงการ'));
+      project.addEventListener('click', function (event) {
+        if (event.target.closest('a,button')) return;
+        openProject(project);
+      });
+      project.addEventListener('keydown', function (event) {
+        if (event.target !== project || (event.key !== 'Enter' && event.key !== ' ')) return;
+        event.preventDefault();
+        openProject(project);
+      });
+    });
+
+    closeButton.addEventListener('click', function () { dialog.close(); });
+    dialog.addEventListener('click', function (event) {
+      if (event.target === dialog) dialog.close();
     });
   })();
 
