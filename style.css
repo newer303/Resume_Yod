@@ -173,12 +173,12 @@ a.contact:hover{ background:rgba(255,255,255,.26); }
 .project .tags{ margin-top:12px; }
 .project .thumb{
   height:150px; border-radius:10px; margin-bottom:14px;
-  background:linear-gradient(135deg,var(--primary-soft),var(--border));
+  background:linear-gradient(135deg,#e9f1ee,#f2eee5);
   border:1px solid var(--border);
   position:relative; overflow:hidden;
 }
 .project .thumb img{
-  width:100%; height:100%; object-fit:cover; display:block;
+  width:100%; height:100%; object-fit:cover; display:block; border-radius:inherit;
 }
 
 /* Timeline */
