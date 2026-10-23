@@ -428,6 +428,11 @@ body{ overflow-wrap:anywhere; }
   .hero h1{ margin-bottom:10px; font-size:32px; }
   .hero .intro{ max-width:40ch; margin:0 auto 16px; font-size:13px; }
   .hero .roles{ justify-content:center; margin-bottom:18px; }
-  .hero .contacts{ flex-direction:row; justify-content:center; width:100%; }
-  .hero .contact-trigger{ width:auto; justify-content:center; }
+  .hero .contacts{ flex-direction:row; justify-content:center; align-items:center; width:100%; gap:8px; }
+  .hero .contact-trigger,.hero .cv-link{ width:auto; max-width:100%; flex:0 1 auto; justify-content:center; padding:10px 12px; }
+  .card h2{ font-size:14px; line-height:1.5; }
+}
+@media (max-width:360px){
+  .hero .contacts{ flex-wrap:wrap; }
+  .hero .contact-trigger,.hero .cv-link{ flex:1 1 100%; }
 }
