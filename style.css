@@ -104,6 +104,11 @@ body{
 .roles{ display:flex; flex-wrap:wrap; gap:8px; margin:0 0 20px; }
 .roles span{ background:#fff; color:var(--primary); font-size:13px; font-weight:700; padding:4px 12px; border-radius:8px; }
 .contacts{ display:flex; flex-wrap:wrap; gap:10px; }
+.language-switch{ display:flex; width:max-content; gap:4px; margin:0 0 12px; padding:4px; border:1px solid rgba(255,255,255,.32); border-radius:999px; background:rgba(255,255,255,.12); }
+.language-button{ min-height:30px; padding:4px 12px; border:0; border-radius:999px; color:rgba(255,255,255,.82); background:transparent; font:inherit; font-size:12px; font-weight:700; cursor:pointer; transition:background .18s,color .18s,box-shadow .18s; }
+.language-button:hover{ color:#fff; background:rgba(255,255,255,.16); }
+.language-button.is-active{ color:#155c73; background:#fff; box-shadow:0 2px 8px rgba(16,45,70,.16); }
+.language-button:focus-visible{ outline:3px solid #fff; outline-offset:3px; }
 .contact{
   display:inline-flex; align-items:center; gap:8px;
   background:rgba(255,255,255,.14);
