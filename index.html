@@ -6,9 +6,34 @@
     <meta http-equiv="refresh" content="0; url=resume.html">
     <link rel="canonical" href="resume.html">
     <title>ยอดชาญ สุภาพันธ์ | Resume</title>
+    <style>
+      :root { color-scheme: light; font-family: "Noto Sans Thai", system-ui, sans-serif; color: #173b3b; background: #f2f6f3; }
+      * { box-sizing: border-box; }
+      body { min-height: 100vh; margin: 0; display: grid; place-items: center; padding: 24px; background: radial-gradient(ellipse at 80% 10%, #d8eee5 0, transparent 38%), #f2f6f3; }
+      .redirect-card { width: min(100%, 440px); padding: 38px 30px; text-align: center; border: 1px solid #dce9e2; border-radius: 24px; background: rgba(255,255,255,.92); box-shadow: 0 22px 60px rgba(26,76,67,.1); }
+      .mark { display: grid; place-items: center; width: 58px; height: 58px; margin: 0 auto 20px; border-radius: 18px; background: linear-gradient(135deg,#10494a,#168b79); color: #fff; font-size: 18px; font-weight: 800; letter-spacing: .06em; }
+      .eyebrow { margin: 0 0 8px; color: #168174; font-size: 11px; font-weight: 800; letter-spacing: .2em; }
+      h1 { margin: 0; font-size: clamp(23px, 6vw, 29px); }
+      .message { margin: 12px 0 22px; color: #6b7d77; font-size: 14px; line-height: 1.8; }
+      .dots { display: flex; justify-content: center; gap: 6px; margin-bottom: 22px; }
+      .dots span { width: 7px; height: 7px; border-radius: 50%; background: #32a795; animation: pulse 1s ease-in-out infinite alternate; }
+      .dots span:nth-child(2) { animation-delay: .2s; } .dots span:nth-child(3) { animation-delay: .4s; }
+      @keyframes pulse { to { opacity: .3; transform: translateY(-3px); } }
+      .link { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 0 20px; border-radius: 12px; background: #10494a; color: #fff; font-size: 14px; font-weight: 700; text-decoration: none; transition: background .2s, transform .2s; }
+      .link:hover { transform: translateY(-2px); background: #087e78; }
+      .link:focus-visible { outline: 3px solid #81cbbb; outline-offset: 3px; }
+      @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; } }
+    </style>
     <script>window.location.replace(new URL('resume.html', window.location.href));</script>
   </head>
   <body>
-    <p>กำลังเปิดหน้า Resume… หากไม่เปลี่ยนหน้าอัตโนมัติ <a href="resume.html">คลิกที่นี่</a></p>
+    <main class="redirect-card" aria-labelledby="page-title">
+      <div class="mark" aria-hidden="true">YS</div>
+      <p class="eyebrow">PORTFOLIO · RESUME</p>
+      <h1 id="page-title">ยอดชาญ สุภาพันธ์</h1>
+      <p class="message">กำลังพาคุณไปยังหน้า Resume<br>อีกสักครู่เดียวค่ะ</p>
+      <div class="dots" aria-hidden="true"><span></span><span></span><span></span></div>
+      <a class="link" href="resume.html">เปิดหน้า Resume <span aria-hidden="true">→</span></a>
+    </main>
   </body>
 </html>
