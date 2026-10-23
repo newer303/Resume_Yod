@@ -397,26 +397,47 @@
 
   (function () {
     var certificates = Array.from(document.querySelectorAll('.cert-with-preview'));
+    var hoverInput = window.matchMedia('(hover:hover) and (pointer:fine)');
 
     function setOpen(certificate, open) {
-      certificate.classList.toggle('is-preview-open', open);
-      certificate.querySelector('.cert-preview-trigger').setAttribute('aria-expanded', String(open));
+      certificates.forEach(function (other) {
+        var isOpen = open && other === certificate;
+        other.classList.toggle('is-preview-open', isOpen);
+        other.querySelector('.cert-preview-trigger').setAttribute('aria-expanded', String(isOpen));
+      });
     }
 
     certificates.forEach(function (certificate) {
-      certificate.querySelector('.cert-preview-trigger').addEventListener('click', function () {
-        var shouldOpen = !certificate.classList.contains('is-preview-open');
-        certificates.forEach(function (other) { setOpen(other, false); });
-        setOpen(certificate, shouldOpen);
+      var trigger = certificate.querySelector('.cert-preview-trigger');
+
+      certificate.addEventListener('pointerenter', function (event) {
+        if (hoverInput.matches && event.pointerType !== 'touch') setOpen(certificate, true);
+      });
+      certificate.addEventListener('pointerleave', function (event) {
+        if (hoverInput.matches && event.pointerType !== 'touch') setOpen(certificate, false);
+      });
+      certificate.addEventListener('focusin', function () { setOpen(certificate, true); });
+      certificate.addEventListener('focusout', function (event) {
+        if (!certificate.contains(event.relatedTarget)) setOpen(certificate, false);
+      });
+      trigger.addEventListener('click', function (event) {
+        if (hoverInput.matches) {
+          setOpen(certificate, true);
+          return;
+        }
+        setOpen(certificate, !certificate.classList.contains('is-preview-open'));
       });
     });
     document.addEventListener('click', function (event) {
       certificates.forEach(function (certificate) {
-        if (!certificate.contains(event.target)) setOpen(certificate, false);
+        if (!certificate.contains(event.target)) {
+          var isOpen = certificates.some(function (item) { return item.classList.contains('is-preview-open'); });
+          if (isOpen) setOpen(null, false);
+        }
       });
     });
     document.addEventListener('keydown', function (event) {
-      if (event.key === 'Escape') certificates.forEach(function (certificate) { setOpen(certificate, false); });
+      if (event.key === 'Escape') setOpen(null, false);
     });
   })();
 </script>

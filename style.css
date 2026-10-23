@@ -277,27 +277,17 @@ a.contact-option:hover{ transform:translateY(-2px); border-color:var(--primary-2
 .cert-preview-trigger>span{ font-size:15px; line-height:1; }
 .cert-preview-trigger small{ color:var(--muted); font-size:10px; font-weight:400; }
 .cert-preview{
-  position:absolute; z-index:5; top:0; left:calc(100% + 20px); width:min(390px,calc(100vw - 48px));
+  display:none; position:relative; width:100%; margin-top:12px;
   padding:10px; border:1px solid var(--border); border-radius:17px; background:var(--card);
-  box-shadow:0 18px 48px rgba(15,23,42,.2); opacity:0; visibility:hidden; pointer-events:none;
-  transform:translateY(8px) scale(.98); transform-origin:top left; transition:opacity .2s ease,transform .2s ease,visibility .2s;
+  box-shadow:0 12px 32px rgba(15,23,42,.14);
 }
 .cert-preview img{ display:block; width:100%; aspect-ratio:16/10; object-fit:cover; border-radius:11px; }
 .cert-preview-caption{ display:grid; gap:2px; padding:9px 4px 1px; }
 .cert-preview-caption strong{ font-size:12px; }
 .cert-preview-caption small{ color:var(--muted); font-size:10px; }
-.cert-with-preview.is-preview-open .cert-preview{ opacity:1; visibility:visible; pointer-events:auto; transform:translateY(0) scale(1); }
-@media (hover:hover) and (pointer:fine){
-  .cert-with-preview:hover .cert-preview,.cert-with-preview:focus-within .cert-preview{
-    opacity:1; visibility:visible; pointer-events:auto; transform:translateY(0) scale(1);
-  }
-}
-@media (max-width:820px){
-  .cert-preview{ position:relative; top:auto; left:auto; width:100%; margin-top:10px; transform:translateY(5px); transform-origin:top center; }
-  .cert-with-preview.is-preview-open .cert-preview{ transform:translateY(0); }
-  .cert-preview-caption small{ font-size:11px; }
-}
-@media (prefers-reduced-motion:reduce){.cert-preview,.cert-preview-trigger{transition:none}}
+.cert-with-preview.is-preview-open .cert-preview{ display:block; animation:cert-preview-in .2s ease-out both; }
+@keyframes cert-preview-in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+@media (prefers-reduced-motion:reduce){.cert-with-preview.is-preview-open .cert-preview{animation:none}}
 
 /* Actions */
 .toolbar{ display:flex; justify-content:flex-end; gap:10px; margin-top:24px; flex-wrap:wrap; }
