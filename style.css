@@ -148,6 +148,9 @@ a.contact:hover{ background:rgba(255,255,255,.26); }
 .label{ font-size:14px; color:var(--muted); margin:18px 0 8px; font-weight:600; }
 .label:first-of-type{ margin-top:0; }
 .chips{ display:flex; flex-wrap:wrap; gap:8px; }
+.tool-groups{ display:grid; gap:12px; }
+.tool-group .label{ margin:0 0 6px; font-size:13px; }
+.tool-note{ margin:12px 0 0; color:var(--muted); font-size:12px; }
 .chip{
   padding:5px 12px; border-radius:8px; font-size:14px; font-weight:500;
   background:var(--bg); border:1px solid var(--border);
