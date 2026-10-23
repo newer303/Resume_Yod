@@ -255,6 +255,10 @@ a.contact-option:hover{ transform:translateY(-2px); border-color:var(--primary-2
 @media (prefers-reduced-motion:reduce){.project,.project-dialog-close{transition:none}}
 @media (max-width:560px){
   .project-dialog{ position:fixed; inset:auto 0 0; width:100%; max-height:calc(100vh - env(safe-area-inset-top, 8px)); max-height:calc(100dvh - env(safe-area-inset-top, 8px)); margin:0; border-radius:22px 22px 0 0; border-bottom:0; }
+  @media (prefers-reduced-motion: no-preference){
+    .project-dialog[open]{ animation:project-sheet-enter .38s cubic-bezier(.22,.8,.25,1) both; }
+    @keyframes project-sheet-enter{from{opacity:.65;transform:translateY(36px)}to{opacity:1;transform:translateY(0)}}
+  }
   .project-dialog-content{ padding:20px 18px calc(24px + env(safe-area-inset-bottom, 0px)); }
   .project-dialog-gallery{ aspect-ratio:16/10; }
   .project-gallery-control{ width:38px; height:38px; }
