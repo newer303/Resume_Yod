@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" role="img" aria-labelledby="title desc">
+  <title id="title">Online store · detail view</title>
+  <desc id="desc">ภาพมุมขยายเพิ่มเติมจากภาพตัวอย่างโครงการ</desc>
+  <defs><clipPath id="frame"><rect width="960" height="540" rx="30"/></clipPath></defs>
+  <g clip-path="url(#frame)"><image href="online-store.svg" x="-210" y="-25" width="1152" height="648" preserveAspectRatio="xMidYMid slice"/>
+    <rect x="30" y="30" width="900" height="480" rx="24" fill="none" stroke="#ffffff" stroke-opacity=".72" stroke-width="3"/>
+    <rect x="30" y="460" width="900" height="80" fill="#101827" fill-opacity=".68"/>
+    <text x="62" y="510" fill="#ffffff" font-family="Arial,sans-serif" font-size="23" font-weight="700" letter-spacing="1">ONLINE STORE · DETAIL VIEW</text>
+    <text x="898" y="510" text-anchor="end" fill="#dce8ff" font-family="Arial,sans-serif" font-size="15">02 / DETAIL</text>
+  </g>
+</svg>
