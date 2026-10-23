@@ -408,9 +408,7 @@
 
     window.addEventListener('scroll', function () {
       certificates.forEach(function (certificate) {
-        if (!certificate.open) return;
-        var bounds = certificate.getBoundingClientRect();
-        if (bounds.bottom <= 0 || bounds.top >= window.innerHeight) certificate.open = false;
+        if (certificate.open) certificate.open = false;
       });
     }, { passive: true });
   })();
