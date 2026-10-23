@@ -214,10 +214,44 @@
   (function () {
     var btn = document.getElementById('moreBtn');
     var list = btn.closest('.card').querySelector('.projects');
+    var cards = Array.from(list.querySelectorAll('.project'));
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var observer = null;
+
+    cards.forEach(function (card, index) {
+      card.style.setProperty('--reveal-delay', (index % 3) * 90 + 'ms');
+    });
+
+    if (!reduceMotion && 'IntersectionObserver' in window) {
+      document.documentElement.classList.add('motion-ready');
+      observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -28px 0px' });
+      cards.forEach(function (card) { observer.observe(card); });
+    } else {
+      cards.forEach(function (card) { card.classList.add('is-visible'); });
+    }
+
     btn.addEventListener('click', function () {
       var open = list.classList.toggle('expanded');
       btn.textContent = open ? 'ซ่อนผลงาน' : 'ดูผลงานเพิ่มเติม';
       btn.setAttribute('aria-expanded', String(open));
+
+      cards.filter(function (card) { return card.classList.contains('extra'); })
+        .forEach(function (card) {
+          if (open) {
+            if (observer) observer.observe(card);
+            else card.classList.add('is-visible');
+          } else {
+            card.classList.remove('is-visible');
+            if (observer) observer.unobserve(card);
+          }
+        });
     });
   })();
 </script>
