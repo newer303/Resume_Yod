@@ -146,11 +146,6 @@ a.contact-option:hover{ transform:translateY(-2px); border-color:var(--primary-2
 .send-message{ display:flex; align-items:center; justify-content:center; gap:10px; min-height:46px; border:0; border-radius:12px; background:var(--primary); color:#fff; font:inherit; font-size:14px; font-weight:700; cursor:pointer; transition:background .18s,transform .18s; }
 .send-message:hover{ background:var(--primary-2); transform:translateY(-1px); }
 .send-message:disabled{ opacity:.68; cursor:wait; transform:none; }
-.compose-options{ display:grid; gap:7px; color:var(--muted); font-size:11px; }
-.compose-options>div{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:9px; }
-.compose-options button{ display:flex; align-items:center; justify-content:center; gap:8px; min-height:40px; border:1px solid var(--border); border-radius:10px; background:var(--card); color:var(--text); font:inherit; font-size:13px; font-weight:700; cursor:pointer; transition:border-color .18s,background .18s; }
-.compose-options button:hover{ border-color:var(--primary-2); background:var(--primary-soft); }
-.compose-options button span{ color:var(--primary); font-weight:800; }
 .form-honeypot{ position:absolute!important; width:1px!important; height:1px!important; padding:0!important; margin:-1px!important; overflow:hidden!important; clip:rect(0,0,0,0)!important; white-space:nowrap!important; border:0!important; }
 .form-status{ min-height:1.4em; margin:0; color:var(--primary); font-size:13px; font-weight:600; }
 .form-status.is-error{ color:#c2413b; }
@@ -393,7 +388,6 @@ body{ overflow-wrap:anywhere; }
   .contact-hint{ margin-bottom:14px; font-size:13px; }
   .contact-form{ gap:10px; margin-top:18px; padding-top:16px; }
   .contact-form input,.contact-form textarea{ font-size:16px; }
-  .compose-options>div{ gap:7px; }
 }
 @media (max-width:360px){ .contact-options{ grid-template-columns:1fr; } }
 

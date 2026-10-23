@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=project-gallery-2">
+<link rel="stylesheet" href="style.css?v=contact-cleanup-1">
 </head>
 <body>
 <div class="wrap">
@@ -280,15 +280,8 @@
       <label>หัวข้อ<input name="subject" placeholder="หัวข้อข้อความ" required></label>
       <label>ข้อความ<textarea name="message" rows="4" placeholder="เขียนข้อความที่ต้องการส่ง…" required></textarea></label>
       <button class="send-message" type="submit">ส่งอีเมล <span aria-hidden="true">→</span></button>
-      <div class="compose-options" aria-label="เลือกแอปอีเมล">
-        <span>หรือเปิดด้วย</span>
-        <div>
-          <button type="button" id="sendWithGmail"><span aria-hidden="true">G</span> Gmail</button>
-          <button type="button" id="sendWithEmail"><span aria-hidden="true">@</span> แอปอีเมล</button>
-        </div>
-      </div>
       <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
-      <p class="mail-note">ส่งจากหน้าเว็บได้โดยตรง หรือเปิด Gmail / แอปอีเมลพร้อมกรอกข้อความไว้ให้</p>
+      <p class="mail-note">ข้อความจะส่งจากหน้าเว็บไปยังอีเมลผู้รับโดยตรง</p>
     </form>
   </div>
 </dialog>
@@ -300,36 +293,11 @@
     var contactClose = document.getElementById('contactClose');
     var contactForm = document.getElementById('contactForm');
     var formStatus = document.getElementById('formStatus');
-    var sendWithGmail = document.getElementById('sendWithGmail');
-    var sendWithEmail = document.getElementById('sendWithEmail');
 
     contactOpen.addEventListener('click', function () { contactDialog.showModal(); });
     contactClose.addEventListener('click', function () { contactDialog.close(); });
     contactDialog.addEventListener('click', function (event) {
       if (event.target === contactDialog) contactDialog.close();
-    });
-    function getComposeData() {
-      if (!contactForm.reportValidity()) return null;
-      var data = new FormData(contactForm);
-      var name = String(data.get('name')).trim();
-      var email = String(data.get('email')).trim();
-      var subject = String(data.get('subject')).trim();
-      var message = String(data.get('message')).trim();
-      return {
-        subject: subject,
-        body: ['ชื่อ: ' + name, 'อีเมลสำหรับติดต่อกลับ: ' + (email || 'ไม่ได้ระบุ'), '', message].join('\n')
-      };
-    }
-    sendWithGmail.addEventListener('click', function () {
-      var data = getComposeData();
-      if (!data) return;
-      var url = 'https://mail.google.com/mail/?view=cm&fs=1&to=' + encodeURIComponent('nkegamer1@gmail.com') + '&su=' + encodeURIComponent(data.subject) + '&body=' + encodeURIComponent(data.body);
-      window.open(url, '_blank', 'noopener,noreferrer');
-    });
-    sendWithEmail.addEventListener('click', function () {
-      var data = getComposeData();
-      if (!data) return;
-      window.location.href = 'mailto:nkegamer1@gmail.com?subject=' + encodeURIComponent(data.subject) + '&body=' + encodeURIComponent(data.body);
     });
     contactForm.addEventListener('submit', async function (event) {
       event.preventDefault();
