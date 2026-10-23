@@ -243,8 +243,15 @@ a.contact-option:hover{ transform:translateY(-2px); border-color:var(--primary-2
 .project-dialog-panel{ position:relative; }
 .project-dialog-close{ position:absolute; z-index:1; top:12px; right:12px; display:grid; place-items:center; width:40px; height:40px; border:1px solid rgba(255,255,255,.5); border-radius:50%; color:#172033; background:rgba(255,255,255,.92); font:inherit; font-size:26px; line-height:1; cursor:pointer; box-shadow:0 4px 14px rgba(0,0,0,.18); }
 .project-dialog-close:hover{ transform:scale(1.05); }
-.project-dialog-image{ width:100%; aspect-ratio:16/9; background:var(--bg); }
+.project-dialog-gallery{ position:relative; width:100%; aspect-ratio:16/9; background:var(--bg); }
+.project-dialog-image{ width:100%; height:100%; }
 .project-dialog-image img{ display:block; width:100%; height:100%; object-fit:cover; }
+.project-gallery-control{ position:absolute; top:50%; display:grid; place-items:center; width:42px; height:42px; padding:0 0 4px; transform:translateY(-50%); border:1px solid rgba(255,255,255,.65); border-radius:50%; color:#172033; background:rgba(255,255,255,.9); font:inherit; font-size:32px; line-height:1; cursor:pointer; box-shadow:0 4px 16px rgba(0,0,0,.2); }
+.project-gallery-control:hover{ background:#fff; }
+.project-gallery-prev{ left:14px; }
+.project-gallery-next{ right:14px; }
+.project-gallery-control[hidden],.project-gallery-count[hidden]{ display:none; }
+.project-gallery-count{ position:absolute; bottom:12px; left:50%; transform:translateX(-50%); padding:4px 10px; border-radius:999px; color:#fff; background:rgba(10,15,25,.68); font-size:12px; font-weight:600; }
 .project-dialog-content{ padding:24px 28px 28px; }
 .project-dialog-content h2{ margin:3px 0 10px; font-size:clamp(20px,4vw,26px); line-height:1.4; }
 .project-dialog-description{ margin:0; color:var(--muted); line-height:1.8; }
@@ -253,7 +260,8 @@ a.contact-option:hover{ transform:translateY(-2px); border-color:var(--primary-2
 @media (max-width:560px){
   .project-dialog{ position:fixed; inset:auto 0 0; width:100%; max-height:calc(100vh - env(safe-area-inset-top, 8px)); max-height:calc(100dvh - env(safe-area-inset-top, 8px)); margin:0; border-radius:22px 22px 0 0; border-bottom:0; }
   .project-dialog-content{ padding:20px 18px calc(24px + env(safe-area-inset-bottom, 0px)); }
-  .project-dialog-image{ aspect-ratio:16/10; }
+  .project-dialog-gallery{ aspect-ratio:16/10; }
+  .project-gallery-control{ width:38px; height:38px; }
 }
 
 /* Timeline */

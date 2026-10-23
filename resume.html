@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=project-dialog-1">
+<link rel="stylesheet" href="style.css?v=project-gallery-1">
 </head>
 <body>
 <div class="wrap">
@@ -173,7 +173,12 @@
       <dialog class="project-dialog" id="projectDialog" aria-labelledby="projectDialogTitle">
         <div class="project-dialog-panel">
           <button class="project-dialog-close" type="button" aria-label="ปิดรายละเอียดโครงการ">×</button>
-          <div class="project-dialog-image"></div>
+          <div class="project-dialog-gallery">
+            <div class="project-dialog-image"></div>
+            <button class="project-gallery-control project-gallery-prev" type="button" aria-label="ดูรูปก่อนหน้า">‹</button>
+            <button class="project-gallery-control project-gallery-next" type="button" aria-label="ดูรูปถัดไป">›</button>
+            <div class="project-gallery-count" aria-live="polite"></div>
+          </div>
           <div class="project-dialog-content">
             <span class="num project-dialog-num"></span>
             <h2 id="projectDialogTitle"></h2>
@@ -416,22 +421,36 @@
     var dialogNumber = dialog.querySelector('.project-dialog-num');
     var dialogTags = dialog.querySelector('.project-dialog-tags');
     var closeButton = dialog.querySelector('.project-dialog-close');
+    var gallery = dialog.querySelector('.project-dialog-gallery');
+    var previousImageButton = dialog.querySelector('.project-gallery-prev');
+    var nextImageButton = dialog.querySelector('.project-gallery-next');
+    var imageCounter = dialog.querySelector('.project-gallery-count');
+    var projectImages = [];
+    var currentImageIndex = 0;
+
+    function showProjectImage(index) {
+      if (!projectImages.length) return;
+      currentImageIndex = (index + projectImages.length) % projectImages.length;
+      var imageCopy = projectImages[currentImageIndex].cloneNode();
+      imageCopy.removeAttribute('fetchpriority');
+      dialogImage.replaceChildren(imageCopy);
+      imageCounter.textContent = (currentImageIndex + 1) + ' / ' + projectImages.length;
+      var hasMultipleImages = projectImages.length > 1;
+      previousImageButton.hidden = !hasMultipleImages;
+      nextImageButton.hidden = !hasMultipleImages;
+      imageCounter.hidden = !hasMultipleImages;
+    }
 
     function openProject(project) {
       var title = project.querySelector('h3');
       var description = project.querySelector('.desc');
-      var image = project.querySelector('.thumb img');
       var number = project.querySelector('.num');
 
       dialogTitle.textContent = title ? title.textContent : 'รายละเอียดโครงการ';
       dialogDescription.textContent = description ? description.textContent : '';
       dialogNumber.textContent = number ? 'PROJECT ' + number.textContent : 'PROJECT';
-      dialogImage.replaceChildren();
-      if (image) {
-        var imageCopy = image.cloneNode();
-        imageCopy.removeAttribute('fetchpriority');
-        dialogImage.appendChild(imageCopy);
-      }
+      projectImages = Array.from(project.querySelectorAll('.thumb img'));
+      showProjectImage(0);
       dialogTags.replaceChildren();
       project.querySelectorAll('.tags .chip').forEach(function (chip) {
         var tag = chip.cloneNode(true);
@@ -458,6 +477,13 @@
     });
 
     closeButton.addEventListener('click', function () { dialog.close(); });
+    previousImageButton.addEventListener('click', function () { showProjectImage(currentImageIndex - 1); });
+    nextImageButton.addEventListener('click', function () { showProjectImage(currentImageIndex + 1); });
+    dialog.addEventListener('keydown', function (event) {
+      if (projectImages.length < 2) return;
+      if (event.key === 'ArrowLeft') showProjectImage(currentImageIndex - 1);
+      if (event.key === 'ArrowRight') showProjectImage(currentImageIndex + 1);
+    });
     dialog.addEventListener('click', function (event) {
       if (event.target === dialog) dialog.close();
     });
