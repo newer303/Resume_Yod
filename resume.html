@@ -239,6 +239,7 @@
 
     <form class="contact-form" id="contactForm">
       <h3>ส่งข้อความทางอีเมล</h3>
+      <input class="form-honeypot" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
       <div class="form-row">
         <label>ชื่อของคุณ<input name="name" autocomplete="name" placeholder="ชื่อ" required></label>
         <label>อีเมลสำหรับติดต่อกลับ <span>(จำเป็น)</span><input name="email" type="email" autocomplete="email" placeholder="you@example.com" required></label>
@@ -246,7 +247,8 @@
       <label>หัวข้อ<input name="subject" placeholder="หัวข้อข้อความ" required></label>
       <label>ข้อความ<textarea name="message" rows="4" placeholder="เขียนข้อความที่ต้องการส่ง…" required></textarea></label>
       <button class="send-message" type="submit">ส่งอีเมล <span aria-hidden="true">→</span></button>
-      <p class="mail-note">ปุ่มนี้จะเปิดแอปอีเมลพร้อมกรอกข้อความ คุณกดยืนยันส่งถึง nkegamer1@gmail.com ในแอปอีกครั้ง</p>
+      <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+      <p class="mail-note">ส่งจากหน้าเว็บไปที่ nkegamer1@gmail.com โดยตรง ไม่ต้องเปิดแอปอีเมล</p>
     </form>
   </div>
 </dialog>
@@ -257,28 +259,45 @@
     var contactDialog = document.getElementById('contactDialog');
     var contactClose = document.getElementById('contactClose');
     var contactForm = document.getElementById('contactForm');
+    var formStatus = document.getElementById('formStatus');
 
     contactOpen.addEventListener('click', function () { contactDialog.showModal(); });
     contactClose.addEventListener('click', function () { contactDialog.close(); });
     contactDialog.addEventListener('click', function (event) {
       if (event.target === contactDialog) contactDialog.close();
     });
-    contactForm.addEventListener('submit', function (event) {
+    contactForm.addEventListener('submit', async function (event) {
       event.preventDefault();
       var formData = new FormData(contactForm);
-      var name = String(formData.get('name')).trim();
-      var email = String(formData.get('email')).trim();
-      var subject = String(formData.get('subject')).trim();
-      var message = String(formData.get('message')).trim();
-      var body = [
-        'ชื่อ: ' + name,
-        'อีเมลสำหรับติดต่อกลับ: ' + email,
-        '',
-        message
-      ].join('\n');
-      var mailto = 'mailto:nkegamer1@gmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
-      contactDialog.close();
-      window.location.href = mailto;
+      var submitButton = contactForm.querySelector('[type="submit"]');
+      var payload = {
+        name: String(formData.get('name')).trim(),
+        email: String(formData.get('email')).trim(),
+        _replyto: String(formData.get('email')).trim(),
+        _subject: String(formData.get('subject')).trim(),
+        message: String(formData.get('message')).trim()
+      };
+      formStatus.textContent = 'กำลังส่งข้อความ…';
+      formStatus.classList.remove('is-error');
+      submitButton.disabled = true;
+      try {
+        var response = await fetch('https://formsubmit.co/ajax/nkegamer1@gmail.com', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        var result = await response.json();
+        if (!response.ok || result.success === false || result.success === 'false') {
+          throw new Error(result.message || 'ส่งข้อความไม่สำเร็จ');
+        }
+        formStatus.textContent = 'ส่งข้อความเรียบร้อยแล้ว ขอบคุณที่ติดต่อมาค่ะ';
+        contactForm.reset();
+      } catch (error) {
+        formStatus.textContent = 'ส่งข้อความไม่สำเร็จ กรุณาลองอีกครั้ง หรือติดต่อทางอีเมลโดยตรง';
+        formStatus.classList.add('is-error');
+      } finally {
+        submitButton.disabled = false;
+      }
     });
   })();
 
