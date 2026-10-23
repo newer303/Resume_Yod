@@ -417,6 +417,9 @@ body{ overflow-wrap:anywhere; }
 .hero .contacts{ align-items:center; }
 .hero .contact-trigger{ padding:10px 16px; border-radius:12px; background:rgba(255,255,255,.2); font-weight:700; }
 .hero .contact-trigger:hover{ background:rgba(255,255,255,.3); }
+.hero .cv-link{ padding:10px 16px; border-radius:12px; border-color:rgba(255,255,255,.32); background:rgba(255,255,255,.08); font-weight:700; }
+.hero .cv-link:hover{ background:rgba(255,255,255,.22); }
+.hero .cv-link svg{ width:17px; height:17px; }
 @media (max-width:560px){
   .hero{ grid-template-columns:minmax(0,1fr); justify-items:center; gap:19px; padding:26px 20px 24px; }
   .hero .avatar-wrapper{ width:132px; height:132px; }
