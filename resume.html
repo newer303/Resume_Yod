@@ -290,14 +290,14 @@
       <div class="contact-option"><span class="option-icon" aria-hidden="true">LINE</span><span><strong>LINE</strong><small>newer303</small></span></div>
     </div>
 
-    <form class="contact-form" id="contactForm">
+    <form class="contact-form" id="contactForm" action="https://formsubmit.co/nkegamer1@gmail.com" method="POST">
       <h3>ส่งข้อความทางอีเมล</h3>
       <input class="form-honeypot" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
       <div class="form-row">
         <label>ชื่อของคุณ<input name="name" autocomplete="name" placeholder="ชื่อ" required></label>
         <label>อีเมลสำหรับติดต่อกลับ <span>(ไม่บังคับ)</span><input name="email" type="email" autocomplete="email" placeholder="you@example.com"></label>
       </div>
-      <label>หัวข้อ<input name="subject" placeholder="หัวข้อข้อความ" required></label>
+      <label>หัวข้อ<input name="_subject" placeholder="หัวข้อข้อความ" required></label>
       <label>ข้อความ<textarea name="message" rows="4" placeholder="เขียนข้อความที่ต้องการส่ง…" required></textarea></label>
       <button class="send-message" type="submit">ส่งอีเมล <span aria-hidden="true">→</span></button>
       <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
@@ -394,7 +394,7 @@
       var submitButton = contactForm.querySelector('[type="submit"]');
       var payload = {
         name: String(formData.get('name')).trim(),
-        _subject: String(formData.get('subject')).trim(),
+        _subject: String(formData.get('_subject')).trim(),
         message: String(formData.get('message')).trim()
       };
       var replyEmail = String(formData.get('email')).trim();
